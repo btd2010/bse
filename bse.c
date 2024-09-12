@@ -90,7 +90,7 @@ void message(const char *fmt, ...);
 editorConfig EE; // initialise the first global state.
 editorConfig *E = &EE;
 
-char *C_HL_extensions[] = {".c", ".h", ".cpp", NULL};
+char *C_HL_extensions[] = {".c", ".h", ".cpp", ".hpp", NULL};
 char *C_HL_keywords[] = {
     "switch", "if",      "while",  "for",     "break",     "continue",
     "return", "else",    "struct", "union",   "typedef",   "static",
@@ -98,7 +98,7 @@ char *C_HL_keywords[] = {
     "long|",  "double|", "float|", "char|",   "unsigned|", "signed|",
     "void|",  NULL};
 
-char *BC_HL_extensions[] = {".bc", ".bh", NULL};
+char *BC_HL_extensions[] = {".bc", ".bh"};
 char *BC_HL_keywords[] = {
     "switch", "if",      "while",  "for",     "break",     "continue",
     "return", "else",    "struct", "union",   "typedef",   "static",
@@ -106,10 +106,20 @@ char *BC_HL_keywords[] = {
     "long|",  "double|", "float|", "char|",   "unsigned|", "signed|",
     "void|",  "string|", NULL};
 
+char *Go_HL_extensions[] = {".go"};
+char *Go_HL_keywords[] = {
+    "const", "var", "func", "type", "import", "package",
+    "chan", "interface", "map", "struct",
+    "break", "case", "continue", "default", "else", "fallthrough", "for",
+    "goto", "if", "range", "return", "select", "switch",
+    "defer", "go", NULL};
+
 struct editorSyntax HLDB[] = {
-    {"c", C_HL_extensions, C_HL_keywords, "//", "/*", "*/",
+     {"c", C_HL_extensions, C_HL_keywords, "//", "/*", "*/",
      HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS},
      {"ben-c", BC_HL_extensions, BC_HL_keywords, "//", "/*", "*/",
+     HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS},
+     {"go", Go_HL_extensions, Go_HL_keywords, "//", "/*", "*/",
      HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS},
 };
 
